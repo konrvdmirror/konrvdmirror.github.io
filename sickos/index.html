@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SickOS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" type="text/css" href="/css/normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/terminal.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/theme.css">
+	<style>
+		* {
+			-webkit-user-select: none; /* Safari */
+			-moz-user-select: none; /* Firefox */
+			-ms-user-select: none; /* IE 10+/Edge */
+			user-select: none; /* Standard */		
+		}
+		::-webkit-scrollbar { width: 5px; }
+		::-webkit-scrollbar-track { 
+			background: var(--background-color); 
+			border-left:1px solid var(--primary-color);
+		}
+		::-webkit-scrollbar-thumb { background: var(--primary-color); }
+		::-webkit-scrollbar-thumb:hover { background: var(--tertiary-color); }
+		.btn:hover { 
+			background-color:var(--tertiary-color);
+		}
+		#launcher {
+			margin-bottom: 20px;
+			background-color: var(--background-color);
+			padding:5px;
+			border:1px solid var(--primary-color);
+			z-index: 9999;
+			position:relative;
+		}
+		#traybar { float:right; }
+		#launcher button {
+			max-width:70px;
+		}
+		
+		.window {
+			min-width: 200px;
+			border: 1px solid var(--primary-color);
+			background-color: var(--background-color);		
+			position: absolute;
+			visibility: hidden;
+			top:60px;
+			left:10px;
+		}
+		.w-topbar {
+			border:1px solid var(--background-color);
+			background-color:var(--primary-color);
+			color:var(--background-color);
+			height:25px;
+			padding-left:2px;
+		}
+		
+		.w-topbar button {
+			float:right;
+			height:23px;
+			width:28px;
+			background:inherit;
+			border:none;
+			border-left:1px solid var(--background-color);
+			font-size:8pt;
+		}
+		.w-topbar	button:active {
+			background-color:var(--tertiary-color);
+		}
+		.w-content {
+			padding:10px;
+		}
+		#www-browser {
+			height:220px;
+			border:none;
+			overflow:hidden;
+		}
+		#www-browser,
+		#www-urlbar {
+			width:550px;
+		}
+		#www-urlbar {
+			margin-bottom:5px;
+		}
+
+	</style>	
+</head>
+<body>
+	<!-- LAUNCHER -->
+	<div id="launcher">
+		<!-- TEMPLATE LAUNCHER ITEM -->
+		<!-- <button onclick="spawnWindow('name')" class="btn btn-primary">Name</button> -->
+		<button onclick="spawnWindow('about')" class="btn btn-primary">About</button>
+		<button onclick="spawnWindow('www')" class="btn btn-primary">WWW</button>
+		<!-- TRAYBAR -->
+		<div id="traybar">	
+			<span id="clock"></span>
+			<button onclick="sortWindows()" class="btn btn-primary" id="sortWindows">
+				Sort
+			</button>
+		</div>
+	</div>
+	<!-- VENTANAS -->
+	<!-- TEMPLATE VENTANA -->
+	<!-- <div class="window" id="name"> -->
+		<!-- <div class="w-topbar"> -->
+			<!-- Name -->
+			<!-- <button onclick="closeWindow('name')" class="close-bt">x</button> -->
+			<!-- <button onclick="minimizeWindow('name', 'clicked')" class="min-bt">-</button> -->
+		<!-- </div> -->
+		<!-- <div class="w-content"> -->
+			<!-- Lorep Ipsum ... -->
+		<!-- </div> -->
+	<!-- </div>	 -->
+	<div class="window" id="about">
+		<div class="w-topbar">
+			About
+			<button onclick="closeWindow('about')" class="close-bt">x</button>
+			<button onclick="minimizeWindow('about', 'clicked')" class="min-bt">-</button>
+		</div>
+		<div class="w-content">
+			<div class="container">
+				<img src="/sickos/mascot.jpeg" alt="Forever the sun ascends, left to burn alone. Sent into despair."/><br>
+				<center><small>
+				SickOS v0.333 by Mirror Labs
+				<br><br>
+				"Never a dawn so bright<br>
+				never a sight so vast<br>
+				Thus the shades."</small></center>
+			</div>
+			
+		</div>
+	</div>
+	
+	<div class="window" id="www">
+		<div class="w-topbar">
+			Web Browser
+			<button onclick="closeWindow('www')" class="close-bt">x</button>
+			<button onclick="minimizeWindow('www', 'clicked')" class="min-bt">-</button>
+		</div>
+		<div class="w-content">
+			<div class="container">
+				<input type="text" id="www-urlbar"/>
+			</div>
+			<iframe src="/" id="www-browser"></iframe>
+		</div>
+	</div>
+	
+	<script>
+	<!-- Funciones de ventanas -->
+	<!-- ABRIR VENTANA -->
+	let wcounter = 0;
+	function spawnWindow(w) {
+		let window = document.getElementById(w);
+		let windows = document.getElementsByClassName("window");
+		let topbars = document.getElementsByClassName("w-topbar");
+		window.style.visibility = "visible";
+		for (var i = 0; i < windows.length; i++){
+			windows[i].style.borderColor = "var(--secondary-color)";
+			topbars[i].style.background = "var(--secondary-color)";
+		}
+		wcounter++;
+		window.style.zIndex = wcounter;
+		if (wcounter == 99) { wcounter=0; }
+		window.style.borderColor = "";
+		window.getElementsByClassName("w-topbar")[0].style.background = "";
+		
+	}
+	
+	<!-- CERRAR VENTANA -->
+	function closeWindow(w) {
+		let window = document.getElementById(w);
+
+		window.style.visibility = "hidden";
+		window.style.left = "";
+		window.style.top = "";
+		minimizeWindow(w, null);
+	}
+	<!-- MINIMIZAR VENTANA -->
+	function minimizeWindow(w,oc) {
+		let window = document.getElementById(w);
+		let windowContent = window.getElementsByClassName("w-content");
+		let windowState = window.getElementsByClassName("min-bt")[0].innerHTML;
+		
+		if (windowState === "-" && oc === "clicked"){
+			window.style.height = "27px";
+			windowContent[0].style.visibility = "hidden";
+			window.getElementsByClassName("min-bt")[0].innerHTML = "+";
+			
+		}
+		else {
+			window.style.height = "";
+			windowContent[0].style.visibility = "";
+			window.getElementsByClassName("min-bt")[0].innerHTML = "-";	
+		}
+	}
+	
+	<!-- Hacer ventanas arrastrables -->
+	let elements = document.getElementsByClassName("window");
+	let x = 0, y = 0;
+
+	for (let i = 0; i < elements.length; i++) {
+		elements[i].onmousedown = function(e) {
+				x = e.pageX;
+				y = e.pageY;
+				spawnWindow(elements[i].id);
+				document.onmousemove = function(e) {
+				elements[i].style.left = (elements[i].offsetLeft + e.pageX - x) + 'px';
+				elements[i].style.top = (elements[i].offsetTop + e.pageY - y) + 'px';
+				x = e.pageX;
+				y = e.pageY;
+			}
+			elements[i].onmouseup = function() {
+				document.onmousemove = null;
+				elements[i].onmouseup = null;
+			}
+		}
+	}
+	
+	<!-- Define hora y la muestra en launcher -->
+	function updateTime() {
+		var now = new Date();
+		var options = { 
+			day: 'numeric', 
+			month: 'numeric', 
+			year: 'numeric', 
+			hour: 'numeric', 
+			minute: 'numeric', 
+			hour12: false };
+		var time = now.toLocaleTimeString("es-cl", options);
+		document.getElementById("clock").innerHTML = time;			
+	}
+	setInterval(updateTime, 1000);
+	
+	<!-- Organiza ventanas visibles -->
+	function getPosition( element ) {
+		var rect = element.getBoundingClientRect();
+		return { y: rect.top };
+	} 
+	function sortWindows() {
+		let elements = document.getElementsByClassName("window");
+		let onlyvisible = [];
+		for (var i = 0; i < elements.length; i++) {
+			if (elements[i].style.visibility !== 'hidden') {
+				onlyvisible.push(elements[i]);
+			}
+		}
+		onlyvisible[0].style.left = "10px";
+		onlyvisible[0].style.top = "60px";
+		for (var i = 1; i < onlyvisible.length; i++) {
+			var pos = getPosition(onlyvisible[i-1]);
+			var tam = onlyvisible[i-1].offsetHeight;
+			onlyvisible[i].style.top = (pos.y+tam+10)+"px";
+			onlyvisible[i].style.left = "10px";
+		}
+		
+	}
+	<!--APLICACIONES-->
+	<!--WEB BROWSER-->
+	let urlbar = document.getElementById("www-urlbar");
+	urlbar.value = "";
+	let browser = document.getElementById("www-browser");
+	document.querySelector('#www-urlbar').addEventListener('keypress', function (e) {
+	if (e.key === 'Enter') {
+		alert("Entering..."+urlbar.value);
+		if (urlbar.value === "mirror.labs") {
+			alert("Oh, those guys. Yeah they are kinda shady but as long as I get paid it's fine, nomesayin?!");
+		} 
+		if (urlbar.value === "exit") { 
+			alert("Yooooo, bro thinks am terminal, nawww bro that's not how it works haha, like just close the window haha");
+		}
+		else {
+			alert("What about it?");
+			browser.setAttribute("src", urlbar.value);
+		}	
+	}
+	});
+	</script>
+</body>
+</html>
