@@ -264,11 +264,9 @@
 		alert("Entering..."+urlbar.value);
 		if (urlbar.value === "mirror.labs") {
 			alert("Oh, those guys. Yeah they are kinda shady but as long as I get paid it's fine, nomesayin?!");
-		} 
-		if (urlbar.value === "exit") { 
+		} else if (urlbar.value === "exit") { 
 			alert("Yooooo, bro thinks am terminal, nawww bro that's not how it works haha, like just close the window haha");
-		}
-		else {
+		} else {
 			alert("What about it?");
 			browser.setAttribute("src", urlbar.value);
 		}	
