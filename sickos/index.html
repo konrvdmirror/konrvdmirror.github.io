@@ -257,8 +257,8 @@
 	<!--APLICACIONES-->
 	<!--WEB BROWSER-->
 	let urlbar = document.getElementById("www-urlbar");
-	urlbar.value = "";
 	let browser = document.getElementById("www-browser");
+	urlbar.value = "";
 	browser.setAttribute("src", "/");
 	document.querySelector('#www-urlbar').addEventListener('keypress', function (e) {
 	if (e.key === 'Enter') {
