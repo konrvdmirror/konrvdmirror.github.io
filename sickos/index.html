@@ -99,6 +99,7 @@
 			</button>
 		</div>
 	</div>
+	
 	<!-- VENTANAS -->
 	<!-- TEMPLATE VENTANA -->
 	<!-- <div class="window" id="name"> -->
@@ -111,6 +112,7 @@
 			<!-- Lorep Ipsum ... -->
 		<!-- </div> -->
 	<!-- </div>	 -->
+	
 	<div class="window" id="about">
 		<div class="w-topbar">
 			About
@@ -260,17 +262,21 @@
 	let browser = document.getElementById("www-browser");
 	urlbar.value = "";
 	browser.setAttribute("src", "/");
+	patience = 3;
 	document.querySelector('#www-urlbar').addEventListener('keypress', function (e) {
 	if (e.key === 'Enter') {
 		alert("Entering..."+urlbar.value);
 		if (urlbar.value === "mirror.labs") {
 			alert("Oh, those guys. Yeah they are kinda shady but as long as I get paid it's fine, nomesayin?!");
+			-=patience;
 		} else if (urlbar.value === "exit") { 
 			alert("Yooooo, bro thinks am terminal, nawww bro that's not how it works haha, like just close the window haha");
+			-=patience;
 		} else {
 			alert("What about it?");
 			browser.setAttribute("src", urlbar.value);
-		}	
+		}
+		console.log(patience);
 	}
 	});
 	</script>
