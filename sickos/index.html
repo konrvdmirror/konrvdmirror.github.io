@@ -274,11 +274,15 @@
 			} else {
 				alert("Oh, those guys. Yeah they are kinda shady but as long as I get paid it's fine, nomesayin?!");
 			}
-		} else if (urlbar.value === "exit") { 
-			alert("Yooooo, bro thinks am terminal, nawww bro that's not how it works haha, like just close the window haha");
-			patience=patience-1;
+		} else if (urlbar.value === "exit") {
+			if (patience==0={
+				alert("Bro, seriously? Are you like...retarded or something?");
+				patience=3;
+			} else {
+				alert("Yooooo, bro thinks am terminal, nawww bro that's not how it works haha, like just close the window haha");
+				patience=patience-1;
+			}
 		} else {
-			alert("What about it?");
 			browser.setAttribute("src", urlbar.value);
 		}
 		console.log(patience);
