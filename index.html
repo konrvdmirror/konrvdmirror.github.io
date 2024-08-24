@@ -1,23 +1,26 @@
-<!-- <!doctype html> -->
-<!-- <html> -->
-<!-- <head> -->
-	<!-- <meta charset='utf-8'> -->
-	<!-- <script src="/jquery.min.js"></script> -->
-	<!-- <script src='/flatdoc.js'></script> -->
-	<!-- <script> -->
-	<!-- Flatdoc.run({ -->
-	  <!-- fetcher: Flatdoc.file('/pages/index.md') -->
-	<!-- }); -->
-	<!-- </script> -->
-<!-- </head> -->
-<!-- <body role='flatdoc'> -->
-	<!-- <div> -->
-		<!-- KonrvdMirror :  -->
-		<!-- <a href="#" onclick="Flatdoc.run({ fetcher: Flatdoc.file('/pages/index.md') });">/</a> -->
-		<!-- <a href="#" onclick="Flatdoc.run({ fetcher: Flatdoc.file('/pages/test.md') });">1</a> -->
-		<!-- <a href="#" onclick="Flatdoc.run({ fetcher: Flatdoc.file('/pages/test2.md') });">2</a> -->
-		<!-- <a href="https://konrvdmirror.github.io/sickos/">?</a> -->
-	<!-- </div> -->
-		<!-- <div role='flatdoc-content'></div> -->
-<!-- </body> -->
-<!-- </html> -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<script src="/jquery.min.js"></script>
+		<script src="/flatdoc.js"></script>
+		<script>
+		Flatdoc.run({
+		  fetcher: Flatdoc.file('/pages/index.md')
+		});
+		</script>		
+		<link rel="stylesheet" type="text/css" href="/css/normalize.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/terminal.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/theme.css"/>
+		<title>Konrvd's Mirror</title>
+	</head>
+	<body class="terminal" role='flatdoc'>
+		<div class="terminal-nav">
+			<div class="logo"> 
+			/ <a href="/">Konrvd Mirror</a> >
+			<a href="#">?</a>
+			</div>
+		</div>
+		<div class="container" role='flatdoc-content'></div>
+	</body>
+</html>
