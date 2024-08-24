@@ -22,8 +22,8 @@
 </head>
 <body role='flatdoc'>
   <div>
-	<a href="#" onclick="alert('lol')">test</a>
-	<a href="#" onclick="alert('lol2')">test2</a>
+	<a href="#" onclick="Flatdoc.run({ fetcher: Flatdoc.file('test.md') });">1</a>
+	<a href="#" onclick="Flatdoc.run({ fetcher: Flatdoc.file('test2.md') });">2</a>
   </div>
   <div role='flatdoc-content'></div>
 </body>
