@@ -1,31 +1,21 @@
 <!doctype html>
-<!--
-
-  This is a blank template containing the barest structure that Flatdoc needs.
-  Customize this as you see fit: add CSS and some markup to get the look that you need.
-
--->
 <html>
 <head>
-  <meta charset='utf-8'>
-
-  <!-- Flatdoc -->
-  <script src="/jquery.min.js"></script>
-  <script src='/flatdoc.js'></script>
-
-  <!-- Initializer -->
-  <script>
-    Flatdoc.run({
-      fetcher: Flatdoc.file('index.md')
-    });
-  </script>
+	<meta charset='utf-8'>
+	<script src="/jquery.min.js"></script>
+	<script src='/flatdoc.js'></script>
+	<script>
+	Flatdoc.run({
+	  fetcher: Flatdoc.file('index.md')
+	});
+	</script>
 </head>
 <body role='flatdoc'>
-  <div>
-	<a href="#" onclick="Flatdoc.run({ fetcher: Flatdoc.file('index.md') });">/</a>
-	<a href="#" onclick="Flatdoc.run({ fetcher: Flatdoc.file('test.md') });">1</a>
-	<a href="#" onclick="Flatdoc.run({ fetcher: Flatdoc.file('test2.md') });">2</a>
-  </div>
-  <div role='flatdoc-content'></div>
+	<div>
+		<a href="#" onclick="Flatdoc.run({ fetcher: Flatdoc.file('index.md') });">/</a>
+		<a href="#" onclick="Flatdoc.run({ fetcher: Flatdoc.file('test.md') });">1</a>
+		<a href="#" onclick="Flatdoc.run({ fetcher: Flatdoc.file('test2.md') });">2</a>
+	</div>
+		<div role='flatdoc-content'></div>
 </body>
 </html>
