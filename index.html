@@ -16,7 +16,10 @@
   <!-- Initializer -->
   <script>
     Flatdoc.run({
-      fetcher: Flatdoc.github('test.md', 'test2.md')
+      fetcher: Flatdoc.file('test.md')
+    });
+    Flatdoc.run({
+      fetcher: Flatdoc.file('test2.md')
     });
   </script>
 </head>
