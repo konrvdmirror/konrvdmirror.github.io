@@ -81,7 +81,7 @@ hr { margin:30px 0px; }
   animation: gradient-animation 4s ease-in-out infinite;
   border-bottom:1px solid #fff;
 }
-.terminal-nav { border-bottom:1px solid #fff; }
+.terminal-nav { border-bottom:1px solid #fff; background-color:#000000;}
 .logo { padding:10px 10px; }
 .pixelart-to-css {
   position: absolute;
