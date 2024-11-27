@@ -13,12 +13,14 @@
 		<title>Konrvd's Mirror</title>
 	</head>
 	<body class="terminal" role='flatdoc'>
-		<div class="colorbar gradient"></div>
-		<div class="pixelart-to-css"></div>
+		<div class="colorbar gradient">
+			<div class="pixelart-to-css"></div>
+			<span id="sickos">powered by<br><strong><a href="/sickos">SickOS</a></strong></span>
+		</div>
 		<div class="terminal-nav">
 			<div class="logo"> 
-			/ <a href="/">Konrvd Mirror</a> >
-			<a href="#">?</a>
+			/ <a href="/" target="_top">Konrvd Mirror</a> :
+			<a href="#" onclick="Flatdoc.run({ fetcher: Flatdoc.file('/pages/test.md') });">--?</a>
 			</div>
 		</div>
 		<div class="container main" role='flatdoc-content'></div>
