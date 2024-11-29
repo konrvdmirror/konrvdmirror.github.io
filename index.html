@@ -5,7 +5,7 @@
 		<script src="/jquery.min.js"></script>
 		<script src="/flatdoc.js"></script>
 		<script>
-		Flatdoc.run({ fetcher: Flatdoc.file('/pages/index.md') });
+			Flatdoc.run({ fetcher: Flatdoc.file('/pages/index.md') });
 		</script>		
 		<link rel="stylesheet" type="text/css" href="/css/normalize.css"/>
 		<link rel="stylesheet" type="text/css" href="/css/terminal.min.css"/>
@@ -18,11 +18,17 @@
 			<span id="sickos">powered by<br><strong><a href="/sickos">SickOS</a></strong></span>
 		</div>
 		<div class="terminal-nav">
+			<canvas id="rando2"></canvas>
 			<div class="logo"> 
-			/ <a href="/" target="_top">Konrvd Mirror</a> :
-			<a href="#" onclick="Flatdoc.run({ fetcher: Flatdoc.file('/pages/bio.md') });">--?</a>
+			<a href="/" target="_top">/Konrvd Mirror</a> :
+			<a href="#" onclick="generatePattern(); Flatdoc.run({ fetcher: Flatdoc.file('/pages/bio.md') });">--?</a>
 			</div>
 		</div>
 		<div class="container main" role='flatdoc-content'></div>
-	</body>
+		<script src="rando2.js"></script>
+		
+    	
+		</body>
+		
+
 </html>
