@@ -1,33 +1,45 @@
-// Configuration
-const canvasSize = 45; // Size of the canvas and square (50x50 pixels)
-const cellSize = 9; // Size of each cell in the square
-const inputString = "■ "; // Characters for the pattern
+function generatePattern(){
 
-// Set up canvas
-const canvas = document.getElementById("rando");
-canvas.width = canvasSize;
-canvas.height = canvasSize;
-const ctx = canvas.getContext("2d", {alpha: false});
+	const gridContainer = document.getElementById("rando");
+	gridContainer.innerHTML = "";
+	const gridSize = 5;       // 5x5 grid
+	const cellSize = 9;      // 50x50 pixels for each square
+	const svgGrid = generateRandomGrid(gridSize, cellSize);
+	
+	function generateRandomGrid(size, cellSize) {
+		// SVG namespace
+		const svgNS = "http://www.w3.org/2000/svg";
 
-// Function to generate and draw the pattern
-function generatePattern() {
-	ctx.clearRect(0, 0, canvasSize, canvasSize);
-	ctx.fillStyle = "black";
-	ctx.fillRect(0, 0, canvasSize, canvasSize);
+		// Create the SVG element
+		const svg = document.createElementNS(svgNS, "svg");
+		svg.setAttribute("width", size * cellSize);   // Set width to 5 * cell size
+		svg.setAttribute("height", size * cellSize);  // Set height to 5 * cell size
+		svg.setAttribute("xmlns", svgNS);
+		svg.setAttribute("style", "border: 1px solid black; display: block;");
 
-	ctx.font = `${cellSize * 0.8}px Arial`;
-	ctx.textAlign = "center";
-	ctx.textBaseline = "middle";
-	ctx.fillStyle = "white";
+		// Loop through rows and columns to create the grid
+		for (let row = 0; row < size; row++) {
+			for (let col = 0; col < size; col++) {
+				// Create a rectangle for each cell
+				const rect = document.createElementNS(svgNS, "rect");
+				rect.setAttribute("x", col * cellSize);
+				rect.setAttribute("y", row * cellSize);
+				rect.setAttribute("width", cellSize);
+				rect.setAttribute("height", cellSize);
 
-	for (let y = 0; y < canvasSize; y += cellSize) {
-		for (let x = 0; x < canvasSize; x += cellSize) {
-			const randomChar = inputString[Math.floor(Math.random() * inputString.length)];
-			const posX = x + cellSize / 2;
-			const posY = y + cellSize / 2;
-			ctx.fillText(randomChar, posX, posY);
+				// Randomly decide if the cell is black or white
+				const isBlack = Math.random() > 0.5; // 50% chance for black
+				rect.setAttribute("fill", isBlack ? "black" : "white");
+				rect.setAttribute("stroke", "black"); // Optional: stroke for grid lines
+
+				// Append the rectangle to the SVG
+				svg.appendChild(rect);
+			}
 		}
+
+		return svg;
 	}
+
+	// Append the SVG to the DOM
+	gridContainer.appendChild(svgGrid);		
 }
-// Draw the square with the random pattern
-generatePattern(inputString);
