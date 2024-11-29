@@ -91,6 +91,7 @@
 		<!-- <button onclick="spawnWindow('name')" class="btn btn-primary">Name</button> -->
 		<button onclick="spawnWindow('about')" class="btn btn-primary">About</button>
 		<button onclick="spawnWindow('www')" class="btn btn-primary">WWW</button>
+		<!-- <button onclick="spawnWindow('randogui')" class="btn btn-primary">RANDO</button> -->
 		<!-- TRAYBAR -->
 		<div id="traybar">	
 			<span id="clock"></span>
@@ -102,11 +103,11 @@
 	
 	<!-- VENTANAS -->
 	<!-- TEMPLATE VENTANA -->
-	<!-- <div class="window" id="name"> -->
+	<!-- <div class="window" id="template"> -->
 		<!-- <div class="w-topbar"> -->
 			<!-- Name -->
-			<!-- <button onclick="closeWindow('name')" class="close-bt">x</button> -->
-			<!-- <button onclick="minimizeWindow('name', 'clicked')" class="min-bt">-</button> -->
+			<!-- <button onclick="closeWindow('template')" class="close-bt">x</button> -->
+			<!-- <button onclick="minimizeWindow('template', 'clicked')" class="min-bt">-</button> -->
 		<!-- </div> -->
 		<!-- <div class="w-content"> -->
 			<!-- Lorep Ipsum ... -->
@@ -146,19 +147,23 @@
 			<iframe id="www-browser"></iframe>
 		</div>
 	</div>
-	<!-- <div class="window" id="rando-w"> -->
-		<!-- <div class="w-topbar"> -->
-			<!-- RANDO Pattern Generator -->
-			<!-- <button onclick="closeWindow('rando-w')" class="close-bt">x</button> -->
-			<!-- <button onclick="minimizeWindow('rando-w', 'clicked')" class="min-bt">-</button> -->
-		<!-- </div> -->
-		<!-- <div class="w-content"> -->
-			<!-- <canvas id="rando"></canvas> -->
-			<!-- <br> -->
-			<!-- <a onclick="generatePattern();">GENERATE!</a> -->
-		<!-- </div> -->
-	<!-- </div>	 -->
+	
+	<div class="window" id="randogui">
+		<div class="w-topbar">
+			RANDO Pattern Generator
+			<button onclick="closeWindow('randogui')" class="close-bt">x</button>
+			<button onclick="minimizeWindow('randogui', 'clicked')" class="min-bt">-</button>
+		</div>
+		<div class="w-content">
+			<canvas id="rando"></canvas>
+			<br>
+			<a onclick="generatePattern();">GENERATE!</a>
+		</div>
+	</div>
+	
+	
 	
 	<script src="sickos.js"></script>
+	<script src="apps/rando.js"></script>
 </body>
 </html>

@@ -92,7 +92,7 @@
 		let elements = document.getElementsByClassName("window");
 		let onlyvisible = [];
 		for (var i = 0; i < elements.length; i++) {
-			if (elements[i].style.visibility !== 'hidden') {
+			if (elements[i].style.visibility == 'visible') {
 				onlyvisible.push(elements[i]);
 			}
 		}
@@ -106,7 +106,8 @@
 		}
 		
 	}
-	//APLICACIONES
+	
+	//Utilidades
 	//WEB BROWSER
 	let urlbar = document.getElementById("www-urlbar");
 	let browser = document.getElementById("www-browser");
@@ -138,37 +139,3 @@
 		console.log(patience);
 	}
 	});
-	
-	//RANDO:GENERADOR DE PATRONES
-	let canvasSize = 45;
-	let cellSize = 9;
-	let inputString = "■ ";
-
-	let canvas = document.getElementById("rando");
-	canvas.width = canvasSize;
-	canvas.height = canvasSize;
-	let ctx = canvas.getContext("2d");
-
-	function generatePattern() {
-		ctx.clearRect(0, 0, canvasSize, canvasSize);
-		ctx.fillStyle = "black";
-		ctx.fillRect(0, 0, canvasSize, canvasSize);
-
-		ctx.font = `${cellSize * 0.8}px Arial`;
-		ctx.textAlign = "center";
-		ctx.textBaseline = "middle";
-		ctx.fillStyle = "white";
-
-		for (let y = 0; y < canvasSize; y += cellSize) {
-			for (let x = 0; x < canvasSize; x += cellSize) {
-				let randomChar = inputString[Math.floor(Math.random() * inputString.length)];
-				let posX = x + cellSize / 2;
-				let posY = y + cellSize / 2;
-				ctx.fillText(randomChar, posX, posY);
-			}
-		}
-	}
-	generatePattern(inputString);
-	
-	
-	
