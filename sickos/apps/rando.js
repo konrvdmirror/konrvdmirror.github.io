@@ -7,7 +7,7 @@ const inputString = "■ "; // Characters for the pattern
 const canvas = document.getElementById("rando");
 canvas.width = canvasSize;
 canvas.height = canvasSize;
-const ctx = canvas.getContext("2d");
+const ctx = canvas.getContext("2d", {alpha: false});
 
 // Function to generate and draw the pattern
 function generatePattern() {

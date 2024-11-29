@@ -111,7 +111,6 @@
 	//WEB BROWSER
 	let urlbar = document.getElementById("www-urlbar");
 	let browser = document.getElementById("www-browser");
-	urlbar.value = "";
 	browser.setAttribute("src", "/");
 	patience = 3;
 	document.querySelector('#www-urlbar').addEventListener('keypress', function (e) {
