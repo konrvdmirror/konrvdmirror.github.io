@@ -15,20 +15,28 @@
 				loadContent();
 				generatePattern();
 			});
+			function capitalizeString(title) {
+				return title
+					.toLowerCase()
+					.replace(/\b\w/g, char => char.toUpperCase());
+			}			
 			function loadContent() {
+				const mainTitle = "Konrvd Mirror";
+				document.title = mainTitle;
 				if (window.location.hash) {
 					const page = window.location.hash.substring(1);
 					Flatdoc.run({ fetcher: Flatdoc.file("/pages/" + page + ".md") });
+					$(document).on('flatdoc:ready', function() {
+						document.title = mainTitle +" - "+ capitalizeString(page);
+					});
 				} else {
 					Flatdoc.run({ fetcher: Flatdoc.file('/pages/index.md') });
 				}
 			}
-
 		</script>		
 		<link rel="stylesheet" type="text/css" href="/css/normalize.css"/>
 		<link rel="stylesheet" type="text/css" href="/css/terminal.min.css"/>
 		<link rel="stylesheet" type="text/css" href="/css/theme.css"/>
-		<title>Konrvd's Mirror</title>
 	</head>
 	<body class="terminal" role='flatdoc'>
 		<div class="colorbar gradient">
@@ -43,8 +51,6 @@
 			</div>
 		</div>
 		<div class="container main" role='flatdoc-content'></div>
-		
-
 		</body>
 		
 
