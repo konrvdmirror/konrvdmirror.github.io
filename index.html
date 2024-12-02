@@ -31,6 +31,9 @@
 					});
 				} else {
 					Flatdoc.run({ fetcher: Flatdoc.file('/pages/index.md') });
+					$(document).on('flatdoc:ready', function() {
+						document.title = mainTitle + " - Inicio";
+					});					
 				}
 			}
 		</script>		
