@@ -8,6 +8,9 @@
 		<script src="/sickos/apps/rando.js"></script>		
 		<script>
 			console.log("Si estas viendo esto me caes bien");
+			window.addEventListener('hashchange', function(event) {
+				event.preventDefault(); // Prevent the default behavior
+			}, false);
 			window.addEventListener("load", () => {
 				loadContent();
 				generatePattern();
