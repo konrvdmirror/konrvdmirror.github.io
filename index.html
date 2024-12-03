@@ -17,9 +17,7 @@
 				loadContent();
 				generatePattern();
 			});
-			window.addEventListener('hashchange', function(event) {
-				event.preventDefault(); // Prevent the default behavior
-			}, false);		
+
 			function capitalizeString(title) {
 				return title
 					.toLowerCase()
@@ -41,6 +39,9 @@
 					});					
 				}
 			}
+			window.addEventListener('hashchange', function(event) {
+				event.preventDefault(); // Prevent the default behavior
+			}, false);			
 		</script>		
 		<link rel="stylesheet" type="text/css" href="/css/normalize.css"/>
 		<link rel="stylesheet" type="text/css" href="/css/terminal.min.css"/>
