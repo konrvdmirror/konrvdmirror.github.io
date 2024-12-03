@@ -11,10 +11,12 @@
 			window.addEventListener("load", () => {
 				loadContent();
 				generatePattern();
+				window.scrollTo(0, 0);				
 			});
 			window.addEventListener('popstate', (event) => {
 				loadContent();
 				generatePattern();
+				window.scrollTo(0, 0);
 			});
 			function capitalizeString(title) {
 				return title
@@ -30,7 +32,6 @@
 					$(document).on('flatdoc:ready', function() {
 						document.title = mainTitle +" - "+ capitalizeString(page);
 					});
-					window.scrollTo(0, 0);
 				} else {
 					Flatdoc.run({ fetcher: Flatdoc.file('/pages/index.md') });
 					$(document).on('flatdoc:ready', function() {
