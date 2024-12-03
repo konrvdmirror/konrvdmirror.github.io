@@ -15,8 +15,9 @@
 			});
 			window.addEventListener('popstate', (event) => {
 				loadContent();
-				generatePattern();
+				generatePattern();				
 			});
+			
 
 			function capitalizeString(title) {
 				return title
@@ -31,15 +32,17 @@
 					Flatdoc.run({ fetcher: Flatdoc.file("/pages/" + page + ".md") });
 					$(document).on('flatdoc:ready', function() {
 						document.title = mainTitle +" - "+ capitalizeString(page);
+						window.scrollTo(0,0);
 					});
-					window.scrollTo({top: 0, behavior: 'smooth'	});
 				} else {
 					Flatdoc.run({ fetcher: Flatdoc.file('/pages/index.md') });
 					$(document).on('flatdoc:ready', function() {
 						document.title = mainTitle + " - Inicio";
 					});					
 				}
-			}	
+			}
+
+
 		</script>		
 		<link rel="stylesheet" type="text/css" href="/css/normalize.css"/>
 		<link rel="stylesheet" type="text/css" href="/css/terminal.min.css"/>
