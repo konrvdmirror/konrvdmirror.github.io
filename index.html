@@ -17,9 +17,9 @@
 				loadContent();
 				generatePattern();
 			});
-			window.addEventListener('hashchange', function() {
-				window.scrollTo(0, 0);
-			});			
+			window.addEventListener('hashchange', function(event) {
+				event.preventDefault(); // Prevent the default behavior
+			}, false);		
 			function capitalizeString(title) {
 				return title
 					.toLowerCase()
