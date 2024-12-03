@@ -36,7 +36,9 @@
 .terminal-card header a { color:var(--background-color); }
 
 .meta {	font-size:var(--global-font-size); }
-
+html, body {
+	scroll-behavior: auto;
+}
 body {
   /* display: flex; */
   height: 100vh;
