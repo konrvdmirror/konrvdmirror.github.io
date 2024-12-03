@@ -8,9 +8,7 @@
 		<script src="/sickos/apps/rando.js"></script>		
 		<script>
 			console.log("Si estas viendo esto me caes bien");
-			window.addEventListener('hashchange', function(event) {
-				event.preventDefault();
-			}, false);
+
 			window.addEventListener("load", () => {
 				loadContent();
 				generatePattern();				
@@ -19,6 +17,9 @@
 				loadContent();
 				generatePattern();
 			});
+			window.addEventListener('hashchange', function() {
+				window.scrollTo(0, 0);
+			});			
 			function capitalizeString(title) {
 				return title
 					.toLowerCase()
