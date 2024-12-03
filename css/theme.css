@@ -1,3 +1,9 @@
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+}
+
 :root {
 	--global-font-size: 15px;
 	--global-line-height: 1.4em;
@@ -34,6 +40,7 @@ body {
   height: 100vh;
   margin: 0;
 }
+
 
 
 
