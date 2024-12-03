@@ -9,17 +9,15 @@
 		<script>
 			console.log("Si estas viendo esto me caes bien");
 			window.addEventListener('hashchange', function(event) {
-				event.preventDefault(); // Prevent the default behavior
+				event.preventDefault();
 			}, false);
 			window.addEventListener("load", () => {
 				loadContent();
-				generatePattern();
-				window.scrollTo(0, 0);				
+				generatePattern();				
 			});
 			window.addEventListener('popstate', (event) => {
 				loadContent();
 				generatePattern();
-				window.scrollTo(0, 0);
 			});
 			function capitalizeString(title) {
 				return title
