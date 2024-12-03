@@ -32,6 +32,7 @@
 					$(document).on('flatdoc:ready', function() {
 						document.title = mainTitle +" - "+ capitalizeString(page);
 					});
+					window.scrollTo({top: 0, behavior: 'smooth'	});
 				} else {
 					Flatdoc.run({ fetcher: Flatdoc.file('/pages/index.md') });
 					$(document).on('flatdoc:ready', function() {
